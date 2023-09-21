@@ -2,7 +2,7 @@ const router = require("express").Router();
 const axios = require("axios");
 
 const params = {
-  access_key: "d9811cfed9b9febb1511db8f165bf5d2",
+  access_key: "API KEY",
   query: "New York",
 };
 
