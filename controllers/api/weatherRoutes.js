@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { weather } = require("../../models");
 const axios = require("axios");
 
 const params = {
