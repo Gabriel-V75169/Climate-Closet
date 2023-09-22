@@ -3,20 +3,6 @@ const { weather } = require("../../models");
 const axios = require("axios");
 require('dotenv').config();
 
-
-// axios
-//   .get("https://api.weatherstack.com/current", { params })
-//   .then((response) => {
-//     const apiResponse = response.data;
-//     console.log(
-//       `Current temperature in ${apiResponse.location.name} is ${apiResponse.current.temperature}℃`
-//     );
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
-
-
   router.get("/",async(req,res)=>{
     try{
         console.log('Testing')

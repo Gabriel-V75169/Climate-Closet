@@ -1,4 +1,4 @@
 const router = require('express').Router();
-const { shopping } = require('../../models');
+const { Shopping } = require('../../models');
 
 module.exports = router;
