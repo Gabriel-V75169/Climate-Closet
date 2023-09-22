@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Shopping, Weather, User } = require('../models');
-const withAuth = require('../utils/auth');
+const withAuth = require('../utils/auth')
 
 router.get('/', async (req, res) =>{
     res.render('home');
@@ -13,5 +13,10 @@ router.get('/login', (req, res) => {
     }
     res.render('login');
   });
+
+  router.get('/profile', async (req, res) =>{
+    res.render('profile');
+  })
+
 
   module.exports = router;
