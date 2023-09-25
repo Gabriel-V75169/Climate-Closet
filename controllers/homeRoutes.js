@@ -18,5 +18,8 @@ router.get('/login', (req, res) => {
     res.render('profile');
   })
 
+router.get('/customize', (req,res) =>{
+  res.render('customize');
+})
 
   module.exports = router;
