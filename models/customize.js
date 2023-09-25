@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Shopping extends Model {}
+class Customize extends Model {}
 
-Shopping.init(
+Customize.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,16 +11,17 @@ Shopping.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    location: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     gender: {
       type: DataTypes.STRING,
+      allowNull: true,
     },
     style: {
       type: DataTypes.STRING,
-      defaultValue: DataTypes.NOW,
+      allowNull: true,
     },
   },
   {
@@ -28,8 +29,8 @@ Shopping.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'shopping',
+    modelName: 'customize',
   }
 );
 
-module.exports = Shopping;
+module.exports = Customize;
