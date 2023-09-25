@@ -5,11 +5,11 @@ require('dotenv').config();
 
   router.get("/",async(req,res)=>{
     try{
-        console.log('Testing')
+        //console.log('Testing')
         const accessKey = process.env.WEATHER_ACCESS_KEY;
         const params = {
             access_key: accessKey,
-            query: "New York",
+            query: weather.location || "Sacramento",
           };
         const apiResponse = await axios.get("http://api.weatherstack.com/current", { params })
         console.log(apiResponse.data)
