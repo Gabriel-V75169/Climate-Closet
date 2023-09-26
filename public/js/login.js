@@ -56,6 +56,8 @@ const loginFormHandler = async (event) => {
 
       if (target.matches(".newAccount")) {  
         
+        document.getElementById("login").style.display = "none";
+
         document.getElementById("create").style.display = "none";
         
         document.getElementById("creating").style.display = "block";  
