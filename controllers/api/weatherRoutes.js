@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { weather } = require("../../models");
+const { Customize } = require("../../models");
 const axios = require("axios");
 require('dotenv').config();
 
@@ -9,7 +9,7 @@ require('dotenv').config();
         const accessKey = process.env.WEATHER_ACCESS_KEY;
         const params = {
             access_key: accessKey,
-            query: weather.location || "Sacramento",
+            query: Customize.location || "Sacramento",
           };
         const apiResponse = await axios.get("http://api.weatherstack.com/current", { params })
         console.log(apiResponse.data)

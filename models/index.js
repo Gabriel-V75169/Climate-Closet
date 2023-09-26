@@ -1,12 +1,13 @@
 const User = require('./user');
 const Customize = require('./customize');
 
+
 User.hasOne(Customize, {
-    foreignKey: 'user_id',
+    foreignKey: 'id',
 })
 
 Customize.belongsTo(User, {
-    foreignKey: 'user_id',
+    foreignKey: 'id',
 })
 
 module.exports = { User, Customize };
