@@ -1,14 +1,22 @@
-const newFormHandler = async (event) => {
+const newAccountForm = async (event) => {
   event.preventDefault();
 
-  const name = document.querySelector('#project-name').value.trim();
-  const needed_funding = document.querySelector('#project-funding').value.trim();
-  const description = document.querySelector('#project-desc').value.trim();
+  const name = document.querySelector('#name-signup').value.trim();
+  const email = document.querySelector('#email-signup').value.trim();
+  const password = document.querySelector('#password-signup').value.trim();
 
-  if (name && needed_funding && description) {
-    const response = await fetch(`/api/projects`, {
+  if (name && email && password) {
+
+    localStorage.setItem('name', name);
+
+    const name = localStorage.getItem('name');
+    document.getElementById('name').textContent = name;
+
+    console.log(name);
+
+    const response = await fetch(`/api/user/login`, {
       method: 'POST',
-      body: JSON.stringify({ name, needed_funding, description }),
+      body: JSON.stringify({ name, email, password }),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -25,6 +33,6 @@ const newFormHandler = async (event) => {
 
 
 document
-  .querySelector('.new-project-form')
-  .addEventListener('submit', newFormHandler);
+  .querySelector('.account-form')
+  .addEventListener('submit', newAccountForm);
 
