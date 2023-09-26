@@ -15,11 +15,23 @@ const ebay = new eBay({
   devId,
 });
 
-router.get("/" ,withAuth, async (req,res) =>{
+router.get("/search" ,withAuth, async (req,res) => {
    try {
-    //retrieve all user id
-    const UserId = req.user.id; 
-   }
-})
+    //Retrieve  user id
+    const userId = req.user.id; 
+    // Retrieve the logged-in user's style preference from the database
+    const customization = await Customize.findOne({
+      where: { userId },
+   });
+    if (!customization) {
+    return res.status(404).json({ message: "Customization not found" });
+    } 
+     // Use the user's style and gender preferences as keywords for eBay API search
+    const keywords = `${customization.style} ${customization.gender}`;
+
+    // Customize the eBay API request with the user's keywords
+    const ebayResponse = await ebay.findItemsAdvanced({ keywords });
+}
+});
 
 module.exports = router;
