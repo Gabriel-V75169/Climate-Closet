@@ -8,17 +8,17 @@ router.get('/', async (req, res) =>{
 
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
-      res.redirect('/');
+      res.redirect('/profile');
       return;
     }
     res.render('login');
   });
 
-  router.get('/profile', async (req, res) =>{
+  router.get('/profile', withAuth, async (req, res) =>{
     res.render('profile');
   })
 
-router.get('/customize', (req,res) =>{
+router.get('/customize', withAuth, (req,res) =>{
   res.render('customize');
 })
 
