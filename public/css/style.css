@@ -132,11 +132,11 @@ header {
   }
   
   .navbar .menu-items {
-    padding-top: 120px;
+    padding-top: 80px;
     color: white;
     height: 100vh;
-    width: 100%;
-    transform: translate(-150%);
+    width: 136%;
+    transform: translate(-400%);
     display: flex;
     flex-direction: column;
     margin-right: -40px;
