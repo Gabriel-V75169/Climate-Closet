@@ -49,3 +49,15 @@ const loginFormHandler = async (event) => {
   document
     .querySelector('.signup-form')
     .addEventListener('submit', signupFormHandler);  
+
+
+    window.addEventListener('click', ({ target }) => {
+  
+
+      if (target.matches(".newAccount")) {  
+        
+        document.getElementById("create").style.display = "none";
+        
+        document.getElementById("creating").style.display = "block";  
+      }
+    });

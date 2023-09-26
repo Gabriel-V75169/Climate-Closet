@@ -22,7 +22,7 @@ img {
 header {
     display: flex;
     border-bottom: solid;
-    border-bottom-width: 6px;
+    border-bottom-width: 4px;
 }
 
 .navigation {
