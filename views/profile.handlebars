@@ -4,14 +4,43 @@
   </div>
 </div>
 
-<div class="row mt-4">
-  <div class="col-md-6">
-    <a href="/customize">Customize your profile</h3></a>
-  </div></div>
-<div class="weatherinfo">WEATHER</div>
-<div id="weatherbox">Your locations weather will show here</div>
+<div class="col-md-6">
+    <h2>Customize Profile</h2>
 
-<div class="ebayShopping">EBAY ADDS</div>
-<div id="ebayAdds">Your clothing recommendations will show here</div>
+    <form class="form customize-form">
+      <div class="form-group">
+        <label for="location">Location:</label>
+        <input class="form-input" type="text" id="location" />
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <input class="form-input" type="text" id="gender" />
+      </div>
+      <div class="form-group">
+        <label for="style">Style:</label>
+        <input class="form-input" type="text" id="style" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+    </form>
 
-<script src="/public/js/profile.js"></script>
+   {{#if Customize.length}}
+   <div class="col-md-6 project-list">
+    <h3>Previous Searches</h3>
+
+    {{#each customize as |customize|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/customize/{{customize.id}}">{{customize.location}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{customize.id}}">DELETE</button>
+      </div>
+     </div>
+     {{/each}}
+     </div>
+    {{/if}}
+  </div>
+
+<script src="./js/profile.js"></script>

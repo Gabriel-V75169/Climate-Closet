@@ -1,34 +1,28 @@
-const newAccountForm = async (event) => {
+
+const customizeProfileHandler = async (event) => {
   event.preventDefault();
+//these lines turn the user inputs into const that we can store
+  const location = document.querySelector('#location').value.trim();
+  const gender = document.querySelector('#gender').value.trim();
+  const style = document.querySelector('#style').value.trim();
 
-  const name = document.querySelector("#name-signup").value.trim();
-  const email = document.querySelector("#email-signup").value.trim();
-  const password = document.querySelector("#password-signup").value.trim();
-
-  if (name && email && password) {
-    localStorage.setItem("name", name);
-
-    const storedName = localStorage.getItem("name");
-    document.getElementById("name").textContent = storedName;
-
-    console.log(name);
-
-    const response = await fetch(`/api/user/login`, {
-      method: "POST",
-      body: JSON.stringify({ name, email, password }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (response.ok) {
-      document.location.replace("/profile");
-    } else {
-      alert("Failed to create project");
+  if (location || gender || style) {
+      const response = await fetch('/api/customize', {
+        method: 'POST',
+        body: JSON.stringify({ location, gender, style }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+  
+      if (response.ok) {
+        document.location.replace('/profile');
+      } else {
+        alert(response.statusText);
+        console.log("failed to update profile");
+      }
     }
-  }
 };
 
+
 document
-  .querySelector(".account-form")
-  .addEventListener("submit", newAccountForm);
+  .querySelector('.customize-form')
+  .addEventListener('submit', customizeProfileHandler);  
