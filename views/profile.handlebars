@@ -25,22 +25,21 @@
       </div>
     </form>
 
-   {{#if Customize.length}}
-   <div class="col-md-6 project-list">
-    <h3>Previous Searches</h3>
-
-    {{#each customize as |customize|}}
-    <div class="row mb-2">
+  
+   <div class="search-list">
+     <h3>{{name}}'s Previous Searches</h3>
+     <p></p>
+      {{#each Customize as |location|}}
+      <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/customize/{{customize.id}}">{{customize.location}}</a></h4>
+        <h4><a href="/customize/{{customize.id}}">{{location}}</a></h4>
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-danger" data-id="{{customize.id}}">DELETE</button>
-      </div>
      </div>
-     {{/each}}
      </div>
-    {{/if}}
-  </div>
+      {{/each}}
+     </div>
+ </div>
 
 <script src="./js/profile.js"></script>
