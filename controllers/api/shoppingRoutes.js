@@ -1,5 +1,6 @@
-// const router = require("express").Router();
-// const {User, Customize } = require("../../models");
+const router = require("express").Router();
+const {User, Customize } = require("../../models");
+
 // require("dotenv").config(); // Load environment variables from .env file
 // const withAuth = require("")
 
@@ -34,4 +35,4 @@
 // }
 // });
 
-// module.exports = router;
+ module.exports = router;
