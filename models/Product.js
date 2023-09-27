@@ -33,6 +33,15 @@ Product.init(
         isNumeric: true,
       },
     },
+    season: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    gender: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
     category_id: {
       type: DataTypes.DECIMAL,
       references: {
