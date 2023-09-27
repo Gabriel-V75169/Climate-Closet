@@ -32,7 +32,7 @@ const loginFormHandler = async (event) => {
         body: JSON.stringify({ name, email, password }),
         headers: { 'Content-Type': 'application/json' },
       });
-  
+      localStorage.setItem('name', name);
       if (response.ok) {
         document.location.replace('/profile');
       } else {
