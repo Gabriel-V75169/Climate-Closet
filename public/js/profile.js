@@ -1,5 +1,5 @@
-const greeting = localStorage.getItem('name');
-document.getElementById('name').innerHTML = greeting;
+// const greeting = localStorage.getItem('name');
+// document.getElementById('name').innerHTML = greeting;
 
 const customizeProfileHandler = async (event) => {
   event.preventDefault();
@@ -9,9 +9,9 @@ const customizeProfileHandler = async (event) => {
   const style = document.querySelector('#style').value.trim();
 
   if (location || gender || style) {
-      const response = await fetch('/api/user', {
+      const response = await fetch('/api/customize', {
         method: 'POST',
-        body: JSON.stringify({ location, style, style }),
+        body: JSON.stringify({ location, gender, style }),
         headers: { 'Content-Type': 'application/json' },
       });
   
