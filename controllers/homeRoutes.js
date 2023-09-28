@@ -12,7 +12,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/profile");
@@ -21,55 +20,54 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-router.get('/profile', withAuth, async (req, res) => {
-    try {
-      // Find the logged in user based on the session ID
-      const userData = await User.findByPk(req.session.user_id, {
-        attributes: { exclude: ['password'] },
-        include: [{ model: Customize, 
-                    attributes: ['gender','season']}],
-      });
-      const user = userData.get({ plain: true });
-      
-      // const customData = await Customize.findAll();
-      // const custom = customData.get({ plain: true });
-       res.render('profile', {
-        ...user,
-        logged_in: true
-       });
-    } catch (err) {
-      res.status(500).json(err);
-    } 
-  });
+router.get("/profile", withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ["password"] },
+      include: [{ model: Customize, attributes: ["gender", "season"] }],
+    });
+    const user = userData.get({ plain: true });
 
-  router.get('/outfits', withAuth, async (req, res) => {
-    try { 
-       const customData = await Customize.findAll();
-       const custom = customData.get({ plain: true });
-       res.render('outfits', {
-        ...custom,
-        logged_in: true
-       });
-    } catch (err) {
-      res.status(500).json(err);
-    } 
-  });
+    // const customData = await Customize.findAll();
+    // const custom = customData.get({ plain: true });
+    res.render("profile", {
+      ...user,
+      logged_in: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-router.get('/customize', withAuth, async (req,res) =>{
-      try {
-        const customData = await Customize.findAll({
-        where: {
-          user_id:req.session.user_id
-        }
-      });
-      const custom = customData.get({plain:true});
-  res.render('customize',{
-    ...custom,
-    logged_in: true
-  });
-} catch (err) {
-  res.status(500).json(err);
-} 
+// router.get('/outfits', withAuth, async (req, res) => {
+//   try {
+//      const customData = await Customize.findAll();
+//      const custom = customData.get({ plain: true });
+//      res.render('outfits', {
+//       ...custom,
+//       logged_in: true
+//      });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+router.get("/customize", withAuth, async (req, res) => {
+  try {
+    const customData = await Customize.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
+    });
+    const custom = customData.get({ plain: true });
+    res.render("customize", {
+      ...custom,
+      logged_in: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;
