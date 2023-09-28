@@ -39,6 +39,10 @@ Product.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    image_url: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
 
     // category_id: {
     //   type: DataTypes.DECIMAL,
