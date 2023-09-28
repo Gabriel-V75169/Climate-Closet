@@ -4,12 +4,12 @@ const customizeProfileHandler = async (event) => {
   event.preventDefault();
 //these lines turn the user inputs into const that we can store
   const gender = document.querySelector('#gender').value.trim();
-  const style = document.querySelector('#season').value.trim();
+  const season = document.querySelector('#season').value.trim();
 
-  if (location || gender || style) {
+  if (gender || season) {
       const response = await fetch('/api/customize', {
         method: 'POST',
-        body: JSON.stringify({ location, gender, style }),
+        body: JSON.stringify({ gender, season }),
         headers: { 'Content-Type': 'application/json' },
       });
   
