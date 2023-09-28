@@ -9,31 +9,24 @@
 
     <form class="form customize-form">
       <div class="form-group">
-        <label for="location">Location:</label>
-        <input class="form-input" type="text" id="location" />
+        <label for="gender-signup">gender:</label>
+        <select name="gender-options" id="gender-signup">
+          <option value ="male">male</option>
+          <option value ="female">female</option>
+          <option value ="other">other</option>
+          </select>
       </div>
       <div class="form-group">
-        <label for="gender">Gender:</label>
-        <input class="form-input" type="text" id="gender" />
-      </div>
-      <div class="form-group">
-        <label for="style">Style:</label>
-        <input class="form-input" type="text" id="style" />
+        <label for="seasons">season:</label>
+        <select name="season-options" id="seasons">
+          <option value ="Summer">Summer</option>
+          <option value ="Fall">Fall</option>
+          <option value ="Winter">Winter</option>
+          </select>
       </div>
       <div class="form-group">
         <button class="btn btn-primary" type="submit">Submit</button>
       </div>
     </form>
-
-  
-   <div class="search-list">
-     <h3>{{name}}'s Previous Searches</h3>
-     <p>Location: {{location}}</p>
-      <ul>
-         {{#each customize}}
-         <li>{{this.location}} - {{this.style}}</li>
-         {{/each}}
-        </ul>
- </div>
 
 <script src="./js/profile.js"></script>
