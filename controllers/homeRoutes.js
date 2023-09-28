@@ -11,10 +11,10 @@ router.get('/', async (req, res) => {
           model: User,
           attributes: ['name'],
         },
-        {
-          model: Customize,
-          attributes: ['location','gender','style']
-        },
+        // {
+        //   model: Customize,
+        //   attributes: ['location','gender','style']
+        // },
       ],
     });
 
@@ -70,11 +70,11 @@ router.get('/profile', withAuth, async (req, res) => {
       // Find the logged in user based on the session ID
       const userData = await User.findByPk(req.session.user_id, {
         attributes: { exclude: ['password'] },
-        include: [{ model: Customize }],
+        include: [{ model: Customize, 
+                    attributes: ['location','gender','style']}],
       });
-  
       const user = userData.get({ plain: true });
-  
+
       res.render('profile', {
         ...user,
         logged_in: true
@@ -84,8 +84,21 @@ router.get('/profile', withAuth, async (req, res) => {
     } 
   });
 
-router.get('/customize', withAuth, (req,res) =>{
-  res.render('customize');
-})
+router.get('/customize', withAuth, async (req,res) =>{
+      try {
+        const customData = await Customize.findAll({
+        where: {
+          user_id:req.session.user_id
+        }
+      });
+      const custom = customData.get({plain:true});
+  res.render('customize',{
+    ...custom,
+    logged_in: true
+  });
+} catch (err) {
+  res.status(500).json(err);
+} 
+});
 
   module.exports = router;
