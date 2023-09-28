@@ -4,7 +4,6 @@ const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
-    // Pass serialized data and session flag into template
     res.render("home", {
       logged_in: req.session.logged_in,
     });
@@ -31,11 +30,26 @@ router.get('/profile', withAuth, async (req, res) => {
                     attributes: ['gender','season']}],
       });
       const user = userData.get({ plain: true });
-
-      res.render('profile', {
+      
+      // const customData = await Customize.findAll();
+      // const custom = customData.get({ plain: true });
+       res.render('profile', {
         ...user,
         logged_in: true
-      });
+       });
+    } catch (err) {
+      res.status(500).json(err);
+    } 
+  });
+
+  router.get('/outfits', withAuth, async (req, res) => {
+    try { 
+       const customData = await Customize.findAll();
+       const custom = customData.get({ plain: true });
+       res.render('outfits', {
+        ...custom,
+        logged_in: true
+       });
     } catch (err) {
       res.status(500).json(err);
     } 

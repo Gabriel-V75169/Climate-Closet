@@ -15,7 +15,7 @@ const customizeProfileHandler = async (event) => {
     });
   
   if (response.ok) {
-      document.location.reload('/profile');
+      document.location.replace('/outfits');
       console.log('Save Successful')
     } else {
       alert(response.statusText);
