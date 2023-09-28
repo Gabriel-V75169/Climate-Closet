@@ -7,16 +7,7 @@
 <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.8/dist/handlebars.min.js"></script>
 <body class="bg-black">
   <div>
-    <header class="header">
-      <a href="/"><img class="images" src='images/FinalLogo.png'alt="ClimateClosetLogo"></a>
-      <section class="navigation">
-        <a class="nonstyle" href="/profile">Profile</a>
-      </section>
-      <section class="navigation margin-right">
-        <a class="nonstyle" href="/login">Login</a>
-      </section> 
-    </div>
-  </header>
+    
     </header>
       <main class="">
         {{{ body }}}
@@ -37,20 +28,18 @@
 </head>
 <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.8/dist/handlebars.min.js"></script>
 <bodyclass="bg-black">
-  <div class="flex-column justify-space-around">
-    <header class="header">
-      <h1>
-        <a href="/"><img class="images" src='images/IMG_2195.png'alt="ClimateClosetLogo"></a>
-      </h1>
-      <nav class="navigation">
-        <!-- Conditionally render login or logout links -->
+  <div class="flex-column justify-space-around">    <header class="header">
+      <a href="/"><img class="images" src='images/FinalLogo.png'alt="ClimateClosetLogo"></a>
+      
+      <section class="navigation margin-right">
         {{#if logged_in}}
         <a href="/profile">Profile</a> |
         <button class="no-button" id="logout">logout</button>
         {{else}}
         <a class="nonstyle" href="/login">login</a>
         {{/if}}
-      </nav>
+      </section> 
+    </div>
     </header>
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
