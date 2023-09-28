@@ -1,5 +1,4 @@
-// const greeting = localStorage.getItem('name');
-// document.getElementById('name').innerHTML = greeting;
+
 
 const customizeProfileHandler = async (event) => {
   event.preventDefault();

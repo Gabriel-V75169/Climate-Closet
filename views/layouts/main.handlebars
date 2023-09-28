@@ -32,14 +32,20 @@
       <a href="/"><img class="images" src='images/FinalLogo.png'alt="ClimateClosetLogo"></a>
       
       <section class="navigation margin-right">
+
+      </h1>
+      <nav class="navigation">
+        <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
         <a href="/profile">Profile</a> |
         <button class="no-button" id="logout">logout</button>
         {{else}}
         <a class="nonstyle" href="/login">login</a>
-        {{/if}}
+        {{/if}
       </section> 
     </div>
+      </nav>
+
     </header>
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->

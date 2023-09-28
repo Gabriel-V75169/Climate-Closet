@@ -58,8 +58,8 @@ const loginFormHandler = async (event) => {
         
         document.getElementById("log").style.display = "none";
 
-    document.getElementById("create").style.display = "none";
-
-    document.getElementById("creating").style.display = "block";
-  }
-});
+        document.getElementById("create").style.display = "none";
+        
+        document.getElementById("creating").style.display = "block";  
+      }
+    });
