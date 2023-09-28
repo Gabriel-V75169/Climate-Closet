@@ -29,4 +29,12 @@
       </div>
     </form>
 
+      <h2>Suggested Products</h2>
+      <ul>
+        {{#each suggestedProducts}}
+        <li>{{this.product_name}} - {{this.price}}</li>
+        {{/each}}
+      </ul>
+      </div>
+
 <script src="./js/profile.js"></script>

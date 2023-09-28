@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Customize, User } = require("../models");
+const { Customize, User, Product } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
         {
           model: User,
 
-          attributes: ['name'],
+          attributes: ["name"],
         },
         // {
         //   model: Customize,
@@ -68,40 +68,82 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-router.get('/profile', withAuth, async (req, res) => {
-    try {
-      // Find the logged in user based on the session ID
-      const userData = await User.findByPk(req.session.user_id, {
-        attributes: { exclude: ['password'] },
-        include: [{ model: Customize, 
-                    attributes: ['location','gender','style']}],
-      });
-      const user = userData.get({ plain: true });
+router.get("/profile", withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ["password"] },
+      include: [
+        { model: Customize, attributes: ["location", "gender", "style"] },
+      ],
+    });
+    const user = userData.get({ plain: true });
 
-      res.render('profile', {
-        ...user,
-        logged_in: true
-      });
-    } catch (err) {
-      res.status(500).json(err);
-    } 
-  });
+    res.render("profile", {
+      ...user,
+      logged_in: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-router.get('/customize', withAuth, async (req,res) =>{
-      try {
-        const customData = await Customize.findAll({
-        where: {
-          user_id:req.session.user_id
-        }
-      });
-      const custom = customData.get({plain:true});
-  res.render('customize',{
-    ...custom,
-    logged_in: true
-  });
-} catch (err) {
-  res.status(500).json(err);
-} 
+router.get("/customize", withAuth, async (req, res) => {
+  try {
+    const customData = await Customize.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
+    });
+    const custom = customData.get({ plain: true });
+    res.render("customize", {
+      ...custom,
+      logged_in: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/profile/:userId", async (req, res) => {
+  try {
+    const userId = req.params.userId;
+
+    // Ensure products are seeded before querying.
+    await seedProducts();
+
+    // Fetch user profile and product suggestions based on user preferences
+    const userProfile = await profile.findOne({
+      where: { userId },
+      attributes: ["gender", "season"],
+    });
+
+    if (!userProfile) {
+      return res.status(404).json({ error: "User profile not found" });
+    }
+
+    const { gender, season } = userProfile;
+
+    // Fetch product suggestions based on user preferences
+    const suggestedProducts = await Product.findAll({
+      where: {
+        gender: gender.toLowerCase(),
+        season: season.toLowerCase(),
+      },
+    });
+
+    // Retrieve user name from local storage
+    const userName = req.headers["name"]; // Replace with the actual header name containing user name
+
+    // Render the profile page with the suggested products and user name
+    res.render("profile", {
+      name: userName || "User's Name", // Use retrieved user name or fallback to a default name
+      suggestedProducts,
+    });
+  } catch (error) {
+    console.error("Error rendering profile page:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
 
 module.exports = router;
