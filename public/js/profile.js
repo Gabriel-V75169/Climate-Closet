@@ -42,21 +42,25 @@ function updateProductSuggestions(products) {
   suggestionsContainer.empty();
 
   if (products.length > 0) {
-    products.forEach((product) => {
-      suggestionsContainer.append(`
-                <div class="listContainer">
-                    <h3>${product.name}</h3>
-                    <p>Price: ${product.price}</p>
-                    <p>Season: ${product.season}</p>
-                    <p>Gender: ${product.gender}</p>
-                </div>
-            `);
+    products.forEach((product, index) => {
+      const outfitNumber = index + 1;
+
+      const outfitContainer = suggestionsContainer.find(
+        `.listContainer:nth-child(${outfitNumber})`
+      );
+      outfitContainer.empty();
+
+      outfitContainer.append(`
+            <h3>${products.name}</h3>
+            <p>Price: ${products.price}</p>
+            <p>Season: ${products.season}</p>
+            <p>Gender: ${products.gender}</p>
+        `);
     });
   } else {
     suggestionsContainer.append("<p>No product suggestions available.</p>");
   }
 }
-
 document
   .querySelector(".customize-form")
   .addEventListener("submit", customizeProfileHandler);

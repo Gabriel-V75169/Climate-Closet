@@ -44,13 +44,13 @@ Product.init(
       allowNull: false,
     },
 
-    // category_id: {
-    //   type: DataTypes.DECIMAL,
-    //   references: {
-    //     model: "category",
-    //     key: "id",
-    //   },
-    // },
+    customize_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "customize",
+        key: "id",
+      },
+    },
   },
   {
     sequelize,

@@ -70,4 +70,20 @@ router.get("/customize", withAuth, async (req, res) => {
   }
 });
 
+router.get("/product-suggestions", async (req, res) => {
+  try {
+    const { gender, season } = req.query;
+    const products = await Product.findAll({
+      where: {
+        gender,
+        season,
+      },
+    });
+    res.json(products);
+  } catch (error) {
+    console.error("Error fetching product suggestions", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 module.exports = router;
