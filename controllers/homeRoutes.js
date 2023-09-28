@@ -9,8 +9,13 @@ router.get("/", async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ["name"],
+
+          attributes: ['name'],
         },
+        // {
+        //   model: Customize,
+        //   attributes: ['location','gender','style']
+        // },
       ],
     });
 
@@ -63,27 +68,40 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-router.get("/profile", withAuth, async (req, res) => {
-  try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ["password"] },
-      include: [{ model: Customize }],
-    });
+router.get('/profile', withAuth, async (req, res) => {
+    try {
+      // Find the logged in user based on the session ID
+      const userData = await User.findByPk(req.session.user_id, {
+        attributes: { exclude: ['password'] },
+        include: [{ model: Customize, 
+                    attributes: ['location','gender','style']}],
+      });
+      const user = userData.get({ plain: true });
 
-    const user = userData.get({ plain: true });
+      res.render('profile', {
+        ...user,
+        logged_in: true
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    } 
+  });
 
-    res.render("profile", {
-      ...user,
-      logged_in: true,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-router.get("/customize", withAuth, (req, res) => {
-  res.render("customize");
+router.get('/customize', withAuth, async (req,res) =>{
+      try {
+        const customData = await Customize.findAll({
+        where: {
+          user_id:req.session.user_id
+        }
+      });
+      const custom = customData.get({plain:true});
+  res.render('customize',{
+    ...custom,
+    logged_in: true
+  });
+} catch (err) {
+  res.status(500).json(err);
+} 
 });
 
 module.exports = router;
