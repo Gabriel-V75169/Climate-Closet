@@ -1,6 +1,7 @@
-const Product = require("../models/Product");
+// const Product = require("../models/Product");
 
-const productsData = [
+// const productsData = 
+[
   // Male products
   {
     product_name: "Male Summer T-Shirt 1",
@@ -105,14 +106,14 @@ const productsData = [
     // category_id: 6, // category with ID 6 for female fall items
   },
 ];
-const seedProducts = async () => {
-  try {
-    await Product.sync({ force: true }); // This will drop the table and recreate it
-    await Product.bulkCreate(productsData);
-    console.log("Products seeded successfully");
-  } catch (error) {
-    console.error("Error seeding products", error);
-  }
-};
+// const seedProducts = async () => {
+//   try {
+//     await Product.sync({ force: true }); // This will drop the table and recreate it
+//     await Product.bulkCreate(productsData);
+//     console.log("Products seeded successfully");
+//   } catch (error) {
+//     console.error("Error seeding products", error);
+//   }
+// };
 
-module.exports = seedProducts;
+// module.exports = seedProducts;
