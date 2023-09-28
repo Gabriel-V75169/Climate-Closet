@@ -3,7 +3,7 @@ const Customize = require('./customize');
 
 
 
-User.hasMany(Customize, {
+User.hasOne(Customize, {
     foreignKey: 'user_id',
 })
 

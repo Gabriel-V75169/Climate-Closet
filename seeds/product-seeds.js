@@ -1,6 +1,7 @@
-const Product = require("./models/Product");
+// const Product = require("./models/Product");
 
-const productsData = [
+// const productsData = 
+[
   // Male products
   {
     product_name: "Male Summer T-Shirt 1",
@@ -96,6 +97,6 @@ const productsData = [
   },
 ];
 
-const seedProducts = () => Product.bulkCreate(productsData);
+// const seedProducts = () => Product.bulkCreate(productsData);
 
-module.exports = seedProducts;
+// module.exports = seedProducts;

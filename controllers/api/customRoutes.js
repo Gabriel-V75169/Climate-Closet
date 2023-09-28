@@ -4,11 +4,12 @@ const withAuth = require('../../utils/auth');
 
 router.post("/", withAuth, async (req, res) => {
     try {
-      const newSearch = await Customize.create({
+      const newCustom = await Customize.create({
         ...req.body,
         user_id:req.session.user_id,
-      });
-      res.status(200).json(newSearch);
+      },
+      );
+      res.status(200).json(newCustom);
     } catch (err) {
       res.status(400).json(err);
     }
