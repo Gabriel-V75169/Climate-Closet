@@ -2,6 +2,7 @@ const User = require('./user');
 const Customize = require('./customize');
 
 
+
 User.hasMany(Customize, {
     foreignKey: 'user_id',
 })

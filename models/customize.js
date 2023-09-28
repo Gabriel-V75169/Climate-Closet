@@ -11,15 +11,11 @@ Customize.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    location: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
     gender: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    style: {
+    season: {
       type: DataTypes.STRING,
       allowNull: true,
     },
