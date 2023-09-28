@@ -47,6 +47,17 @@ header {
     cursor: pointer;
 }
 
+.welcome {
+  text-align: right;
+  margin: 0px;
+}
+
+.textUnderline {
+  box-shadow: 0px 0px 0px 0px #00afef;
+  border-bottom: 4px solid var(--newBlue);
+  justify-content: center;
+}
+
 .mainContainer {
   display: block;
   min-width: 800px;
@@ -56,7 +67,7 @@ header {
   transition: 1s;
   height: 375px;
   border: 8px solid black;
-  background-color: #111111;
+  background-color: black;
   border-radius: 5px;
   padding-top: 4px;
   margin-top: 40px;
@@ -74,7 +85,7 @@ header {
   transition: 1s;
   height: 220px;
   border: 8px solid black;
-  background-color: #111111;
+  background-color: black;
   border-radius: 5px;
   padding-top: 4px;
   margin-top: 40px;
@@ -92,7 +103,7 @@ header {
   transition: 1s;
   height: 175px;
   border: 8px solid black;
-  background-color: #111111;
+  background-color: black;
 
   border-radius: 5px;
   padding-top: 4px;
