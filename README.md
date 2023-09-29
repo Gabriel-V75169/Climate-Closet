@@ -1,7 +1,8 @@
-# Up-To-Debate
+# Climate Closet
 ## Description
 
-  N/A
+  Climate closet is an application that will give you outfit reccomendations based on the climate. By answering a couple questions and creating a profile you will be greeted with new outfits each day based on the forecast, climate, and season.
+
 
 ## Table of Contents
 
@@ -15,15 +16,16 @@
   
 ## Dependencies
 
-  macOS,Windows 10,Linux
+  macOS,Windows 10,Linux, mySQL, Sequelize, Handlebars, Nodejs, Heroku, Axios, dotenv, ebay-node-api
+
     
 ## Installation
-    
+  [Deployed App](https://git.heroku.com/climatecloset-app.git)
   [Repository](https://github.com/Gabriel-V75169/Up-For-Debate)
     
 ## Usage
     
-  [Pages](undefined)
+  ![Screenshot to deployed App](public/images/CC-screenshot.png)
     
 ## Credits
     
@@ -31,13 +33,15 @@
     
 ## License
     
-  This project is licensed under the No License License - see the LICENSE file for details 
-    
-  ![badge]( https://img.shields.io/badge/License-No%20Lincesnse-red)
+  MIT 
     
 ## Contribution
     
-  Up-To-Debate
+Gabriel V. - CSS, Handlebars, Presentation
+Taylor R. - customRoutes, user profile js functions
+Rael - shoppingRoutes, Product database, Wireframes,Logo, 
+Gabriel R - userRoutes, Login/logout functions
+
     
 ## Questions
 
