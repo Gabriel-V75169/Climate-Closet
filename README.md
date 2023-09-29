@@ -20,7 +20,7 @@
 
     
 ## Installation
-  [Deployed App](https://git.heroku.com/climatecloset-app.git)
+  [Deployed App](https://climatecloset-app-18aad80eadfc.herokuapp.com/)
   [Repository](https://github.com/Gabriel-V75169/Up-For-Debate)
     
 ## Usage
